@@ -59,7 +59,7 @@ class RadioTest {
         Radio volume = new Radio();
         volume.setCurrentVolume(1);
 
-        volume.IncreaseVolume();
+        volume.increaseVolume();
 
         int expected = 2;
         int actual = volume.getCurrentVolume();
@@ -72,7 +72,7 @@ class RadioTest {
         Radio volume = new Radio();
         volume.setCurrentVolume(10);
 
-        volume.IncreaseVolume();
+        volume.increaseVolume();
 
         int expected = 10;
         int actual = volume.getCurrentVolume();
@@ -193,7 +193,6 @@ class RadioTest {
 
         assertEquals(expected, actual);
     }
-
 
 
 }
