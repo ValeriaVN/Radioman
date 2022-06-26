@@ -3,6 +3,28 @@ package ru.netology.radio;
 public class Radio {
     private int currentVolume;
     private int currentStation;
+    private int maxStation = 9;
+    private int maxVolume = 100;
+
+
+   public Radio () {
+    }
+
+   public Radio (int maxStation ) {
+        this.maxStation = maxStation;
+    }
+
+   public int getMaxStation() {
+       return maxStation;
+    }
+
+   public void setMaxStation(int maxStation) {
+       if (maxStation < 0) {
+           return;
+        }
+        this.maxStation = maxStation;
+    }
+
 
     public int getCurrentVolume() {
         return currentVolume;
@@ -12,20 +34,27 @@ public class Radio {
         if (newCurrentVolume < 0) {
             return;
         }
-        if (newCurrentVolume > 10) {
+        if (newCurrentVolume > maxVolume) {
             return;
         }
         currentVolume = newCurrentVolume;
     }
 
     public void increaseVolume() {
-        if (currentVolume < 10) {
+        if (currentVolume >= maxVolume) {
+            currentVolume = 100;
+
+        }
+        else {
             currentVolume = currentVolume + 1;
         }
     }
 
     public void turnDownVolume() {
-        if (currentVolume > 0) {
+        if (currentVolume <= 0) {
+            currentVolume = 0;
+        }
+        else {
             currentVolume = currentVolume - 1;
         }
     }
@@ -40,7 +69,7 @@ public class Radio {
         if (newCurrentStation < 0) {
             return;
         }
-        if (newCurrentStation > 9) {
+        if (newCurrentStation > maxStation) {
             return;
         }
         currentStation = newCurrentStation;
@@ -48,17 +77,18 @@ public class Radio {
 
 
     public void nextStation() {
-        if (currentStation >= 9) {
+        if (currentStation >= maxStation) {
             currentStation = 0;
         } else {
             currentStation = currentStation + 1;
+
         }
 
     }
 
     public void prevStation() {
         if (currentStation <= 0) {
-            currentStation = 9;
+            currentStation = maxStation;
         } else {
             currentStation = currentStation - 1;
         }
