@@ -10,7 +10,7 @@ class RadioTest {
     public void limitMaxVolume() {
         Radio volume = new Radio();
 
-        volume.setCurrentVolume(11);
+        volume.setCurrentVolume(101);
 
         int expected = 0;
         int actual = volume.getCurrentVolume();
@@ -22,9 +22,9 @@ class RadioTest {
     public void limitMaxNormVolume() {
         Radio volume = new Radio();
 
-        volume.setCurrentVolume(10);
+        volume.setCurrentVolume(100);
 
-        int expected = 10;
+        int expected = 100;
         int actual = volume.getCurrentVolume();
 
         assertEquals(expected, actual);
@@ -46,9 +46,9 @@ class RadioTest {
     public void limitMinNormVolume() {
         Radio volume = new Radio();
 
-        volume.setCurrentVolume(1);
+        volume.setCurrentVolume(2);
 
-        int expected = 1;
+        int expected = 2;
         int actual = volume.getCurrentVolume();
 
         assertEquals(expected, actual);
@@ -70,11 +70,11 @@ class RadioTest {
     @Test
     public void limitMaxIncreaseVolume() {
         Radio volume = new Radio();
-        volume.setCurrentVolume(10);
+        volume.setCurrentVolume(100);
 
         volume.increaseVolume();
 
-        int expected = 10;
+        int expected = 100;
         int actual = volume.getCurrentVolume();
 
         assertEquals(expected, actual);
@@ -193,6 +193,38 @@ class RadioTest {
 
         assertEquals(expected, actual);
     }
+
+
+    @Test
+    public void setStationMaxLimit() {
+
+        Radio station = new Radio(20);
+        station.setCurrentStation(19);
+
+        station.nextStation();
+
+        int expected = 0;
+        int actual = station.getCurrentStation();
+
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void setStationNewMax() {
+
+        Radio station = new Radio(18);
+        station.setCurrentStation(13);
+
+        station.nextStation();
+
+        int expected = 14;
+        int actual = station.getCurrentStation();
+
+        assertEquals(expected, actual);
+
+    }
+
 
 
 }
