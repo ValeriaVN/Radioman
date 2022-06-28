@@ -212,7 +212,7 @@ class RadioTest {
     public void setStationMaxLimit() {
 
         Radio station = new Radio(20);
-        station.setCurrentStation(20);
+        station.setCurrentStation(19);
 
         station.nextStation();
 
@@ -227,11 +227,11 @@ class RadioTest {
     public void setStationNewMax() {
 
         Radio station = new Radio(20);
-        station.setCurrentStation(19);
+        station.setCurrentStation(13);
 
         station.nextStation();
 
-        int expected = 20;
+        int expected = 14;
         int actual = station.getCurrentStation();
 
         assertEquals(expected, actual);
