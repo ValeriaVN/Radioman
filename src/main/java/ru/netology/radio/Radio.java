@@ -14,17 +14,6 @@ public class Radio {
         maxStation = numberOfStations - 1;
     }
 
-        public int getMaxStation() {
-        return maxStation;
-    }
-
-    public void setMaxStation(int maxStation) {
-        if (maxStation < 0) {
-            return;
-        }
-        this.maxStation = maxStation;
-    }
-
 
     public int getCurrentVolume() {
         return currentVolume;
